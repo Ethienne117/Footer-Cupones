@@ -71,9 +71,6 @@
                 <video controls autoplay>
                     <source src="cupones/feli.mp4" type="video/mp4">
                 </video>
-                <audio autoplay>
-                        <source src="audio/felia.mp3" type="audio/mp3">   
-                </audio>
                 </center>
                 </td>
                 

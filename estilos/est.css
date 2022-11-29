@@ -51,6 +51,22 @@
     }
 }
 
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: #f8682f;
+}
+  
+a:hover {
+    color: #ff9a44;
+}
+  
+a:active {
+    color: #ff9a44;
+}
+
 /*
 .pie{
     height: 100vh;

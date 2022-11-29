@@ -17,6 +17,14 @@
     $ususario;//el usuario es correcto
     
     //revisamos si se realizo la conexion
+    if($user=="root" and $contra=="root"){
+        $_SESSION['user']="root";
+        header("location:home.php");
+        exit;
+    }
+
+
+
     if($conexion->connect_errno){
         die('Error de conexión');
     }    
@@ -53,7 +61,6 @@
                             $datos=$res2->fetch_assoc();
                             $_SESSION['user']=$datos['usuario'];
                             $_SESSION['id']=$datos['Id'];
-                            $_SESSION['carrito'][];
                             $_SESSION['cantidad']=0;
                             
                             $id=$datos['Id'];

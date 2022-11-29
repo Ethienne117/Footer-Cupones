@@ -1,16 +1,25 @@
+<?php
+session_start();
+if($_SESSION['user']!="root"){
+    //echo "no root";
+    header("location:home.php");
+}
+else{
+    session_abort();
+    //echo "root";
+?>
+
 <?php 
 include_once 'header.php';
 ?>
-
 <?php
     require 'conexion.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <link rel="stylesheet" href="estilos/est.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Tienda</title>
+    <title>Tienda/Modificar</title>
 </head>
 
 <body>
@@ -25,9 +34,9 @@ include_once 'header.php';
     ?>
         <div class="col">
             <div class="card h-100">
-            <img src="<?php echo $fila['Archivo'] ?>" class="card-img-top" alt="..." height="200px">
+            <a style="text-decoration: none; color: black" href="modificar.php?id=<?php echo $fila['Id'] ?>"><img src="<?php echo $fila['Archivo'] ?>" class="card-img-top" alt="..." height="200px"></a>
                 <div class="card-body">
-                    <h5 class="card-title"><?php echo $fila['Nombre'] ?></h5>
+                    <a style="text-decoration: none" href="modificar.php?id=<?php echo $fila['Id'] ?>"><h5 class="card-title"><?php echo $fila['Nombre'] ?></h5></a>
                     <p class="card-text">
                         <?php
                             if($fila['oferta'] != '0'){?>
@@ -44,10 +53,6 @@ include_once 'header.php';
                 </div>
                 <div class="card-footer">
                     <small class="text-muted"><?php echo $fila['Descripcion'] ?></small>
-                    <form action="producto.php" method="post">
-                        <input type="hidden" name="id" value="<?php echo $fila['Id'] ?>">
-                        <input type="submit" value="Ver">
-                    </form>
                 </div>
             </div>
         </div>
@@ -56,11 +61,13 @@ include_once 'header.php';
     ?>
     </div>
     </center>
-    
+    <?php
+        include_once("Footer.php");
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
-<?php
-    include_once("Footer.php");
-?>
 
+<?php
+}
+?>
